@@ -1,8 +1,6 @@
 import networkx as nx
 import pandas as pd
 
-#huutista
-
 # Load data from files
 def load_data(file_path):
     data = pd.read_csv(file_path, delimiter='\t')
