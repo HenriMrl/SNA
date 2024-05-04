@@ -1,0 +1,10 @@
+2
+Network Properties:
+Number of edges: 12717
+Number of nodes: 1892
+Magnitude of largest component: 1843
+Count of components: 20
+Sizes of components: [1843, 7, 2, 3, 2, 2, 2, 2, 3, 2, 3, 4, 2, 2, 2, 2, 3, 2, 2, 2]
+Diameter: 9
+Average path length: 1.1675980453669517
+Average clustering coefficient: 0.20079877246464156
