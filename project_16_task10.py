@@ -22,7 +22,7 @@ centrality_measures.update(nx.algorithms.centrality.eigenvector_centrality(G))
 # sort the nodes based on the centrality measures
 sorted_centrality = sorted(centrality_measures.items(), key=lambda x: x[1], reverse=True)
 
-# Step 6: Print top-10 nodes for each centrality measure
+# Print top-10 based on the centrality measures
 print("Top 10 nodes based on Combined Centrality Measures:")
 for node, centrality in sorted_centrality[:10]:
     print(node, centrality)
