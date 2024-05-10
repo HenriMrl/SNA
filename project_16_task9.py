@@ -1,6 +1,7 @@
 import pandas as pd
 import networkx as nx
 import matplotlib.pyplot as plt
+import pickle
 
 data = pd.read_csv("user_taggedartists.dat", delimiter="\t")
 
@@ -10,9 +11,13 @@ G = nx.Graph()
 grouped_data = data.groupby('artistID')['tagID'].apply(set).reset_index()
 
 # Step 2: Add nodes and attributes to the graph
-for index, row in grouped_data.iterrows():
-    print(f"Adding node {row['artistID']} with tags {row['tagID']}")
-    G.add_node(row['artistID'], tags=row['tagID'])
+with open("tag_results.txt", "w") as file:  # Open file for documenting results
+    file.write("Nodes and their tags:\n")
+    for index, row in grouped_data.iterrows():
+        print(f"Adding node {row['artistID']} with tags {row['tagID']}")
+        G.add_node(row['artistID'], tags=row['tagID'])
+        # Document the node and its tags in the file
+        file.write(f"Node {row['artistID']} has tags {row['tagID']}\n")
 
 print("Nodes added successfully.")
 
@@ -32,7 +37,9 @@ for u in G.nodes():
         if jaccard_similarity > 0:
             G.add_edge(u, v, weight=jaccard_similarity)
 
-print("Jaccard similarities calculated and edges added successfully.")
+# Save the graph for task 10
+with open("artist_network.pickle", "wb") as f:
+    pickle.dump(G, f)
 
 # Step 5: drawing graph
 
@@ -51,3 +58,5 @@ nx.draw_networkx_labels(G, pos, font_size=8)
 plt.axis('off')
 plt.show()
 print("Process completed successfully.")
+
+

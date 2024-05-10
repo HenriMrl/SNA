@@ -1,7 +1,10 @@
 import networkx as nx
+import pickle
 # task 10 implemented
 
-G = nx.Graph()
+# load the graph from task 9
+with open("artist_network.pickle", "rb") as f:
+    G = pickle.load(f)
 
 # read the data
 data = [] 
